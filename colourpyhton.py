@@ -10,7 +10,7 @@ plt.rcParams.update({'font.size': 10})
 # %%
 #Part A galaxy types and colours
 
-pA = pd.read_csv('PartA.csv')
+pA = pd.read_csv('Data/PartA.csv')
 
 a_ug = pA['u'] - pA['g']
 a_gr = pA['g'] - pA['r']
@@ -47,7 +47,7 @@ ax1.set_ylim(0,1.2)
 ax1.set_xlabel('(u-g)')
 ax1.set_ylabel('(g-r)')
 plt.tight_layout()
-plt.savefig('parta.pdf')
+plt.savefig('Data/parta.pdf')
 
 df1 = pA[['u','g','r']]
 df1.insert(loc=0, column='Galaxy', value=a)
@@ -57,8 +57,8 @@ df1 = df1.transpose()
 print(list(range(1,21)))
 # %%
 # Part B Clusters of Galaxies
-b = pd.read_csv("PartB.csv")
-b2 = pd.read_csv('PartB2.csv')
+b = pd.read_csv("Data/PartB.csv")
+b2 = pd.read_csv('Data/PartB2.csv')
 b2 = b2[b2['type'] == 3]
 
 df2 = b[['ra','dec','u','g','r']]
@@ -82,7 +82,7 @@ ax2.set_xlabel('(u-g)')
 ax2.set_ylabel('(g-r)')
 ax2.legend()
 plt.tight_layout()
-plt.savefig('partb1.pdf')
+plt.savefig('Data/partb1.pdf')
 
 fig3 = plt.figure(figsize=(5,3.3))
 ax3 = fig3.add_subplot(111)
@@ -96,7 +96,7 @@ ax3.set_xlabel('(u-g)')
 ax3.set_ylabel('(g-r)')
 ax3.legend()
 plt.tight_layout()
-plt.savefig('partb1zoom.pdf')
+plt.savefig('Data/partb1zoom.pdf')
 
 b2['u-g'] = (b2['u']-b2['g'])
 b2['g-r'] = (b2['g']-b2['r'])
@@ -135,16 +135,16 @@ ax4.set_xlabel('u-r')
 ax4.set_ylabel('g')
 ax4.legend(loc='best')
 plt.tight_layout()
-plt.savefig("urproperties.pdf")
+plt.savefig("Data/urproperties.pdf")
 # %%
 #Part C: Tracking galaxy colours as a function of redshift
-A2255 = pd.read_csv('PartB2.csv')
+A2255 = pd.read_csv('Data/PartB2.csv')
 A2255 = A2255[A2255['type'] == 3]
 
-A0023 = pd.read_csv('Abell0023.csv')
+A0023 = pd.read_csv('Data/Abell0023.csv')
 A0023 = A0023[A0023['type'] == 3]
 
-A0267 = pd.read_csv('Abell0267.csv')
+A0267 = pd.read_csv('Data/Abell0267.csv')
 A0267 = A0267[A0267['type'] == 3]
 
 A2255['u-g'] = (A2255['u']-A2255['g'])
@@ -169,7 +169,7 @@ ax5.set_xlabel('u-g')
 ax5.set_ylabel('g-r')
 ax5.legend(loc='best')
 plt.tight_layout()
-plt.savefig("partcallgalaxy.pdf")
+plt.savefig("Data/partcallgalaxy.pdf")
 # %%
 #Part C: histograms 
 A2255['u-r'] = (A2255['u']-A2255['r'])
@@ -186,7 +186,7 @@ plt.ylabel('Frequency')
 plt.xlim(-5,15)
 plt.ylim(0,100)
 plt.tight_layout()
-plt.savefig("A2255hist.pdf")
+plt.savefig("Data/A2255hist.pdf")
 
 plt.figure(figsize=(3.5,2.5))
 plt.hist(A0023['u-r'],bins=hisbins,color='palegreen',alpha=0.5)
@@ -196,7 +196,7 @@ plt.xlabel('u-r')
 plt.xlim(-5,15)
 plt.ylim(0,100)
 plt.tight_layout()
-plt.savefig("A0023hist.pdf")
+plt.savefig("Data/A0023hist.pdf")
 
 plt.figure(figsize=(3.5,2.5))
 plt.hist(A0267['u-r'],bins=hisbins,color='crimson',alpha=0.5)
@@ -206,7 +206,7 @@ plt.xlabel('u-r')
 plt.xlim(-5,15)
 plt.ylim(0,100)
 plt.tight_layout()
-plt.savefig("A0267hist.pdf")
+plt.savefig("Data/A0267hist.pdf")
 
 # %%
 #Part C: values
@@ -250,7 +250,7 @@ ax6.set_ylim(0.0,0.25)
 ax6.set_xlabel('Number of galaxies')
 ax6.set_ylabel('Redshift')
 plt.tight_layout()
-plt.savefig("numbervsredshift.pdf")
+plt.savefig("Data/numbervsredshift.pdf")
 
 fig7 = plt.figure(figsize=(5,3.3))
 ax7 = fig7.add_subplot(111)
@@ -279,6 +279,6 @@ ax7.set_ylim(0.0,0.25)
 ax7.set_xlabel('Fraction of galaxies in the cluster')
 ax7.set_ylabel('Redshift')
 plt.tight_layout()
-plt.savefig("fracvsredshift.pdf")
+plt.savefig("Data/fracvsredshift.pdf")
 # %%
     

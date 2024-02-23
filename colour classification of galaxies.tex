@@ -1,0 +1,219 @@
+\documentclass[10pt]{article}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[margin=3cm, top=5cm, headheight=90pt]{geometry}
+\usepackage{cmbright}
+\usepackage[OT1]{fontenc}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage{natbib}
+\setcitestyle{square}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\pagestyle{fancy}
+\rhead{\includegraphics[width=0.2\textwidth]{/Users/finn/Documents/Cardiff-University-logo-for-website}}
+\lhead{{\large PX2155 Observational Techniques in Astronomy \\ Electronic Laboratory Diary} \\ (Experiment title) \\ \today \\ Finnbar Wilson \vspace{0.6cm}}
+
+\begin{document}
+\section{Aims and Objectives}
+\section{Plan}
+\section{Risk Assessment}
+This experiment has little to no risk so it is safe to carry out the experiment.
+\begin{table}[H]
+	\centering
+	\caption{Risk Assessment}
+	\begin{tabular}{p{0.2\textwidth}p{0.65\textwidth}}
+		\toprule
+		Risk & Mitigation \\
+		\midrule
+		Tripping & Place trip hazards under desk \\
+		\addlinespace
+		\cellcolor{gray!10} Electric shock & \cellcolor{gray!10} Do not drink water in the lab \\
+		\addlinespace
+		Sitting for long period of time & Can cause wrist and band injuries so take frequent breaks to stand up and stretch. \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Context:}
+\section{Methods}
+
+This experiment was split into three parts: a) manually determing galaxy types and colours, b) using radial search to determine galaxy types and colours and c) tracking galaxy colours as a function of redshift. These three parts will allow an overview of how colour classifcationncan find the makeup and evolution of galxies in the universe. 
+
+\subsection{Part A: Galaxy types and colours}
+
+A selection of 9 galaxies from \citet{labhandbook} were classified by their type according to the Hubble's tuning fork diagram. The types as well as the Ra/Dec of each of these galaxies are shown in Table \ref{tab:manual}. The type of galaxy was determined by its shape and, for spiral galaxies, their arms.
+
+% put in the results section
+%These results are not accurate due to unkown factors like their angle to the observer which can make it difficult to decide if it is a spiral or eliptical. This also affects the accuracy in determing which type of eliptical galacy it is as it makes it harder to see the shape of the galaxy.
+
+\begin{table}
+	\caption{Manual selection of galaxy types}
+	\begin{tabularx}{\textwidth}{lYYYYYYYYY}
+		\toprule
+		Galaxy & a & b & c & d & e & f & g & h & i \\
+		\midrule
+		RA & 248.920 & 254.768 & 248.295 & 248.051 & 248.275 & 248.064 & 256.022 & 249.860 & 256.384 \\
+		\addlinespace
+		Dec & 0.331 & 16.715 & -0.213 & -0.304 & -0.189 & -0.049 & 16.764 & 11.211 & 17.304 \\
+		\addlinespace
+		Type & E0 & Sb & Sc & E5 & E3 & E0 & E7 & Sa & E0 \\
+		\bottomrule
+	\end{tabularx}
+	\caption*{The galaxies a to i are from \citet{labhandbook} and the types were manually determined by their shapes}
+	\label{tab:manual}
+\end{table}
+
+To compare a manual classification with the colour-colour diagram technique the same 9 galaxies were located in the SDSS Object Explorer Tool \citep{SDSS-OET} using data from \citet{SDSS} and their colour magnitudes in the u, g and r filters were recorded. This data can be found in Table \ref{tab:ccmanual}.
+
+\begin{table}
+	\caption{Colour magnitudes of manual selection galaxies}
+	\begin{tabularx}{\textwidth}{lYYYYYYYYY}
+		\toprule
+		Galaxy &       a &       b &       c &       d &       e &       f &       g &       h &       i \\
+		\midrule
+		u      &  17.15324 &  18.56369 &  16.63296 &   17.5638 &  16.33673 &  17.96088 &  18.04585 &   18.9135 &  16.59498 \\
+		\addlinespace
+		g      &  15.80188 &  16.72327 &  15.32729 &  16.44441 &  14.27109 &  16.19392 &  16.05928 &  16.92161 &  15.23521 \\
+		\addlinespace
+		r      &  15.18173 &  15.79623 &   14.6805 &  15.96938 &  13.33829 &  15.26711 &  15.11235 &  15.91144 &  14.62179 \\
+		\bottomrule
+	\end{tabularx}
+	\caption*{Found using the Object Explorer tool \citep{SDSS-OET}. u is the ultraviolet magnitude, g is the green magnitude and r is the red magnitude.}
+	\label{tab:ccmanual}
+\end{table}
+
+\subsection{Part B: Clusters of galaxies}
+
+Investigating the properties of individual galaxies is not a usefull metric when trying to predict behaviours of all galaxies in the universe. Finding the mean behaiours of a large number of galaxies is more insiteful way of finding galaxy properties. Galactic clusters have a large number of galaxies with similar redshifts and therefore the similar ages which allow for an anlysis of galactic classification. Abell 2255 (A2255) is a galactic cluster with 426 member galaxies \citep{Shim_2011} at Ra/Dec: 258.1292/+64.0925. Two techniques were used to find the colour magnitudes of member galaxies in A2255: manual selection of cluster members and radial search of the area of the cluster.
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\includegraphics[width=0.4\textwidth]{Figures/Abell2255pic}
+	\caption{}
+	\label{fig:abell2255pic}
+\end{wrapfigure}
+{\bf Manual selection of cluster members:} The position of A2255 was entered into the SDSS Navigate Tool \citep{SDSS-NT} and 21 galaxies were selected from the cluster. An image of A2255 from \citet{SDSS-NT} is show in Figure \ref{fig:abell2255pic}. Three metrics were used to determine if a galaxy was a member of A2255. Galaxies in the same cluster will have been redshifted by the same amount so their colours will be very similar. Therefore, cluster members were chosen by being a similar colour to other close by galaxies. Proximity, cluster members will be close by to each other so their seperation was taken into account. Size, given that the members are at the same distance they should have similar sizes in comparison to galaxies that are closer or further away. The colour magnitudes and position is shown in Table
+
+\begin{table}
+	\centering
+	\caption{Manual selection of A2255 members}
+	\begin{tabularx}{0.8\textwidth}{lYYYYY}
+		\toprule
+		Galaxy & RA &        Dec &         u &         g &         r \\
+		\midrule
+		1      & 258.145 & 64.071 & 17.944 & 15.427 & 14.454 \\
+		2      & 258.096 & 64.033 & 19.730 & 17.554 & 16.543 \\
+		3      & 258.208 & 64.053 & 19.197 & 16.991 & 16.032 \\
+		4      & 258.066 & 64.073 & 19.717 & 17.584 & 16.649 \\
+		5      & 258.067 & 64.037 & 19.869 & 17.792 & 16.808 \\
+		6      & 258.213 & 64.073 & 19.228 & 17.193 & 16.262 \\
+		7      & 258.120 & 64.061 & 17.325 & 14.937 & 14.037 \\
+		8      & 258.107 & 64.065 & 19.596 & 17.791 & 16.863 \\
+		9      & 258.144 & 64.053 & 20.965 & 18.954 & 17.961 \\
+		10     & 258.227 & 63.992 & 18.142 & 16.190 & 15.264 \\
+		11     & 258.258 & 64.052 & 17.967 & 15.819 & 14.829 \\
+		12     & 257.992 & 64.089 & 18.857 & 16.838 & 15.926 \\
+		13     & 258.026 & 64.054 & 21.631 & 19.738 & 18.901 \\
+		14     & 258.135 & 64.003 & 18.509 & 16.494 & 15.549 \\
+		15     & 258.231 & 64.029 & 20.357 & 18.214 & 17.312 \\
+		16     & 258.319 & 64.056 & 19.200 & 17.232 & 16.315 \\
+		17     & 258.371 & 64.047 & 17.802 & 15.653 & 14.647 \\
+		18     & 258.266 & 64.117 & 18.471 & 16.476 & 15.532 \\
+		19     & 258.341 & 64.069 & 18.696 & 16.648 & 15.710 \\
+		20     & 258.329 & 64.077 & 18.137 & 16.102 & 15.158 \\
+		21     & 258.313 & 64.073 & 18.363 & 16.299 & 15.373 \\
+	\bottomrule
+	\end{tabularx}
+	\caption*{he}
+\end{table}
+
+\section{Results and discussion}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Figures/parta}
+	\caption{}
+	\label{fig:parta}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/partb1}
+		\caption{}
+		\label{fig:partbout}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/partb1zoom}
+		\caption{}
+		\label{fig:partbin}
+	\end{subfigure}
+	\caption{}
+	\label{fig:partb}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Figures/urproperties}
+	\caption{}
+	\label{fig:partburproperties}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Figures/partcallgalaxy}
+	\caption{}
+	\label{fig:partccolourcolour}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{0.33\textwidth}
+		\includegraphics[width=\textwidth]{Figures/A2255hist}
+		\caption{Abell 2255}
+		\label{fig:a2255hist}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\includegraphics[width=\textwidth]{Figures/A0023hist}
+		\caption{Abell 0023}
+		\label{fig:a0023hist}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\includegraphics[width=\textwidth]{Figures/A0267hist}
+		\caption{Abell 0267}
+		\label{fig:a0267hist}
+	\end{subfigure}
+	\caption{}
+	\label{fig:hist}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/numbervsredshift}
+		\caption{}
+		\label{fig:numvsred}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{Figures/fracvsredshift}
+		\caption{}
+		\label{fig:fracvsred}
+	\end{subfigure}
+	\caption{}
+	\label{fig:red}
+\end{figure}
+
+\section{Conclusion}
+
+\bibliographystyle{agsm}
+\bibliography{colourref.bib}
+\end{document}
