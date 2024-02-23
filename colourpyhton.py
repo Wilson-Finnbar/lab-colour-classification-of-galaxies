@@ -15,11 +15,11 @@ pA = pd.read_csv('Data/PartA.csv')
 a_ug = pA['u'] - pA['g']
 a_gr = pA['g'] - pA['r']
 
-bcx = a_ug[a_ug>1.6]
-bcy = a_gr[a_ug>1.6]
+rcx = a_ug[a_ug>1.6]
+rcy = a_gr[a_ug>1.6]
 
-rcx = a_ug[a_ug<1.6]
-rcy = a_gr[a_ug<1.6]
+bcx = a_ug[a_ug<1.6]
+bcy = a_gr[a_ug<1.6]
 
 x =  np.arange(1,2.2,0.1)
 y = 2.2-x
@@ -53,8 +53,7 @@ df1 = pA[['u','g','r']]
 df1.insert(loc=0, column='Galaxy', value=a)
 df1.reset_index(drop=True, inplace=True)
 df1 = df1.transpose()
-
-print(list(range(1,21)))
+print(df1.to_latex(float_format="%.3f"))
 # %%
 # Part B Clusters of Galaxies
 b = pd.read_csv("Data/PartB.csv")
@@ -261,18 +260,18 @@ ax7.plot(x,y,'k--',alpha=0.3)
 
 ax7.plot(a2255/len(A2255.axes[0]),0.081,c='mediumpurple',marker='o',lw=0,alpha=0.9)
 ax7.plot((len(A2255.axes[0])-a2255)/len(A2255.axes[0]),0.081,c='mediumpurple',marker='o',lw=0,alpha=0.9)
-ax7.annotate(f"A2255 spirals",(a2255/len(A2255.axes[0])+0.03,0.081-0.004))
-ax7.annotate(f"A2255 eliptical",(((len(A2255.axes[0])-a2255)/len(A2255.axes[0]))-0.29,0.081-0.004))
+ax7.annotate(f"A2255 eliptical",(a2255/len(A2255.axes[0])+0.03,0.081-0.004))
+ax7.annotate(f"A2255 spirals",(((len(A2255.axes[0])-a2255)/len(A2255.axes[0]))-0.29,0.081-0.004))
 
 ax7.plot(a0023/len(A0023.axes[0]),0.105,c='palegreen',marker='o',lw=0,alpha=0.9)
 ax7.plot((len(A0023.axes[0])-a0023)/len(A0023.axes[0]),0.105,c='palegreen',marker='o',lw=0,alpha=0.9)
-ax7.annotate(f"A0023 spirals",(a0023/len(A0023.axes[0])-0.28,0.105-0.004))
-ax7.annotate(f"A0023 eliptical",(((len(A0023.axes[0])-a0023)/len(A0023.axes[0]))+0.02,0.105-0.004))
+ax7.annotate(f"A0023 eliptical",(a0023/len(A0023.axes[0])-0.28,0.105-0.004))
+ax7.annotate(f"A0023 spirals",(((len(A0023.axes[0])-a0023)/len(A0023.axes[0]))+0.02,0.105-0.004))
 
 ax7.plot(a0267/len(A0267.axes[0]),0.230,c='crimson',marker='o',lw=0,alpha=0.9)
 ax7.plot((len(A0267.axes[0])-a0267)/len(A0267.axes[0]),0.230,c='crimson',marker='o',lw=0,alpha=0.9)
-ax7.annotate(f"A0267 spirals",(a0267/len(A0267.axes[0])-0.28,0.230-0.004))
-ax7.annotate(f"A0267 eliptical",(((len(A0267.axes[0])-a0267)/len(A0267.axes[0]))+0.02,0.230-0.004))
+ax7.annotate(f"A0267 eliptical",(a0267/len(A0267.axes[0])-0.28,0.230-0.004))
+ax7.annotate(f"A0267 spirals",(((len(A0267.axes[0])-a0267)/len(A0267.axes[0]))+0.02,0.230-0.004))
 
 ax7.set_xlim(0,1)
 ax7.set_ylim(0.0,0.25)
@@ -281,4 +280,3 @@ ax7.set_ylabel('Redshift')
 plt.tight_layout()
 plt.savefig("Figure/fracvsredshift.pdf")
 # %%
-    
