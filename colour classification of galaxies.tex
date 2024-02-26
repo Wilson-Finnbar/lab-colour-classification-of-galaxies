@@ -21,14 +21,24 @@
 \usepackage{parskip}
 \usepackage{tabularx}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{multirow}
 
 \pagestyle{fancy}
 \rhead{\includegraphics[width=0.2\textwidth]{/Users/finn/Documents/Cardiff-University-logo-for-website}}
-\lhead{{\large PX2155 Observational Techniques in Astronomy \\ Electronic Laboratory Diary} \\ (Experiment title) \\ \today \\ Finnbar Wilson \vspace{0.6cm}}
+\lhead{{\large PX2155 Observational Techniques in Astronomy \\ Electronic Laboratory Diary} \\ Colour classification of galaxies \\ \today \\ Finnbar Wilson \vspace{0.6cm}}
 
 \begin{document}
 \section{Aims and Objectives}
+In this report colour magnitude data from the Sloan Digital Sky Survey (SDSS) of galaxies will be recorded to create a colour-colour diagram to find the fraction of early and late type galaxies in the universe and how they change with redshift. Also in this report methods of determining galaxy type will be compared.
 \section{Plan}
+In this experiment, the subsequent outline will be followed in order to ensure that the report meets all of the scientific goals as listed below:
+\begin{itemize}
+	\item Visually determine the classification of 9 galaxies by their shape.
+	\item Create a colour-colour diagram of the same 9 galaxies and determine if the galaxies can be split into early and late types.
+	\item Compare the Visual determined and colour-colour classification techniques
+	\item Take a radial search of Abell 2255 and compare how it to manually selecting galaxies in the cluster
+	\item Find how the ratio of elliptical and spiral galaxies change with redshift.
+\end{itemize}
 \section{Risk Assessment}
 This experiment has little to no risk so it is safe to carry out the experiment.
 \begin{table}[H]
@@ -47,10 +57,23 @@ This experiment has little to no risk so it is safe to carry out the experiment.
 	\end{tabular}
 \end{table}
 
-\section{Context:}
+\pagebreak
+
+\section{Context: Early and late type galaxies}
+
+\begin{wrapfigure}[15]{r}{0.35\textwidth}
+	\vspace{-1.1\intextsep}
+	\centering
+	\includegraphics[width=0.35\textwidth]{Figure/hubbleturningfork}
+	\caption{Hubbles tuning fork.}
+	\label{fig:hubble}
+\end{wrapfigure}
+
+In 1926 Edwin Hubble developed a galaxy classification scheme called the Hubble tuning fork as shown in Figure \ref{fig:hubble}. It classifies galaxies into two types: Elliptical denoted by E and Spiral denoted by S. These two categories are further broken down into E0 to E7 based on their ellipticity where E0 is round and E7 is very elliptical as well as Sa to Sc + SBa to SBc where the lower case letter a to c is the size of their arms and SB is barred spiral and S is unbarred \citep{hubbletuning}. Edwin Hubble referred to the galaxies on the left hand side of the tuning fork as early type galaxies and those on the right hand side as late type galaxies. A common misconception is that Hubble thought that elliptical galaxies (early type) evolve into spiral galaxies (late type) but actually he was just adopting previous terminology for galactic classification \citep{latetype}.
+
 \section{Methods}
 
-This experiment was split into three parts: a) manually determing galaxy types and colours, b) using radial search to determine galaxy types and colours and c) tracking galaxy colours as a function of redshift. These three parts will allow an overview of how colour classifcationncan find the makeup and evolution of galxies in the universe. 
+This experiment was split into three parts: a) manually determining galaxy types and colours, b) using radial search to determine galaxy types and colours and c) tracking galaxy colours as a function of redshift. These three parts will allow an overview of how colour classification can find the makeup and evolution of galaxies in the universe. 
 
 \subsection{Part A: Galaxy types and colours}
 
@@ -59,7 +82,7 @@ A selection of 9 galaxies from \citet{labhandbook} were classified by their type
 % put in the results section
 %These results are not accurate due to unkown factors like their angle to the observer which can make it difficult to decide if it is a spiral or eliptical. This also affects the accuracy in determing which type of eliptical galacy it is as it makes it harder to see the shape of the galaxy.
 
-\begin{table}
+\begin{table}[H]
 	\caption{Manual selection of galaxy types}
 	\begin{tabularx}{\textwidth}{lYYYYYYYYY}
 		\toprule
@@ -76,19 +99,19 @@ A selection of 9 galaxies from \citet{labhandbook} were classified by their type
 	\label{tab:manual}
 \end{table}
 
-To compare a manual classification with the colour-colour diagram technique the same 9 galaxies were located in the SDSS Object Explorer Tool \citep{SDSS-OET} using data from \citet{SDSS} and their colour magnitudes in the u, g and r filters were recorded. This data can be found in Table \ref{tab:ccmanual}.
+To compare a manual classification with the colour-colour diagram technique the same 9 galaxies were located in the SDSS Object Explorer Tool \citep{SDSS-OET} using data from \citet{SDSS} and their colour magnitudes in the u, g and r filters were recorded. This data can be found in Table \ref{tab:ccmanual}. When recording this data a warning came up saying that the photometry may be unreliable so the values might not be super accurate.
 
-\begin{table}
+\begin{table}[H]
 	\caption{Colour magnitudes of manual selection galaxies}
 	\begin{tabularx}{\textwidth}{lYYYYYYYYY}
 		\toprule
 		Galaxy &       a &       b &       c &       d &       e &       f &       g &       h &       i \\
 		\midrule
-		u      &  17.15324 &  18.56369 &  16.63296 &   17.5638 &  16.33673 &  17.96088 &  18.04585 &   18.9135 &  16.59498 \\
+		u & 17.153 & 18.564 & 16.633 & 17.564 & 16.337 & 17.961 & 18.046 & 18.913 & 16.595 \\
 		\addlinespace
-		g      &  15.80188 &  16.72327 &  15.32729 &  16.44441 &  14.27109 &  16.19392 &  16.05928 &  16.92161 &  15.23521 \\
+		g & 15.802 & 16.723 & 15.327 & 16.444 & 14.271 & 16.194 & 16.059 & 16.922 & 15.235 \\
 		\addlinespace
-		r      &  15.18173 &  15.79623 &   14.6805 &  15.96938 &  13.33829 &  15.26711 &  15.11235 &  15.91144 &  14.62179 \\
+		r & 15.182 & 15.796 & 14.681 & 15.969 & 13.338 & 15.267 & 15.112 & 15.911 & 14.622 \\
 		\bottomrule
 	\end{tabularx}
 	\caption*{Found using the Object Explorer tool \citep{SDSS-OET}. u is the ultraviolet magnitude, g is the green magnitude and r is the red magnitude.}
@@ -97,16 +120,21 @@ To compare a manual classification with the colour-colour diagram technique the 
 
 \subsection{Part B: Clusters of galaxies}
 
-Investigating the properties of individual galaxies is not a usefull metric when trying to predict behaviours of all galaxies in the universe. Finding the mean behaiours of a large number of galaxies is more insiteful way of finding galaxy properties. Galactic clusters have a large number of galaxies with similar redshifts and therefore the similar ages which allow for an anlysis of galactic classification. Abell 2255 (A2255) is a galactic cluster with 426 member galaxies \citep{Shim_2011} at Ra/Dec: 258.1292/+64.0925. Two techniques were used to find the colour magnitudes of member galaxies in A2255: manual selection of cluster members and radial search of the area of the cluster.
+Investigating the properties of individual galaxies is not a useful metric when trying to predict behaviours of all galaxies in the universe. Finding the mean behaviours of a large number of galaxies is more insightful way of finding galaxy properties. Galactic clusters have a large number of galaxies with similar redshifts and therefore the similar ages which allow for an analysis of galactic classification. Abell 2255 (A2255) is a galactic cluster with 426 member galaxies \citep{Shim_2011} at Ra/Dec: 258.1292/+64.0925. Two techniques were used to find the colour magnitudes of member galaxies in A2255: manual selection of cluster members and radial search of the area of the cluster.
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-	\includegraphics[width=0.4\textwidth]{Figures/Abell2255pic}
-	\caption{}
+\begin{wrapfigure}[11]{r}{0.4\textwidth}
+	\vspace{-1.1\intextsep}
+	\centering
+	\includegraphics[width=0.4\textwidth]{Figure/Abell2255pic}
+	\caption{Image of Abell 2255}
 	\label{fig:abell2255pic}
 \end{wrapfigure}
-{\bf Manual selection of cluster members:} The position of A2255 was entered into the SDSS Navigate Tool \citep{SDSS-NT} and 21 galaxies were selected from the cluster. An image of A2255 from \citet{SDSS-NT} is show in Figure \ref{fig:abell2255pic}. Three metrics were used to determine if a galaxy was a member of A2255. Galaxies in the same cluster will have been redshifted by the same amount so their colours will be very similar. Therefore, cluster members were chosen by being a similar colour to other close by galaxies. Proximity, cluster members will be close by to each other so their seperation was taken into account. Size, given that the members are at the same distance they should have similar sizes in comparison to galaxies that are closer or further away. The colour magnitudes and position is shown in Table
 
-\begin{table}
+\textbf{Manual selection of cluster members:} 
+
+The position of A2255 was entered into the SDSS Navigate Tool \citep{SDSS-NT} and 21 galaxies were selected from the cluster. An image of A2255 from \citet{SDSS-NT} is show in Figure \ref{fig:abell2255pic}. Three metrics were used to determine if a galaxy was a member of A2255. Galaxies in the same cluster will have been redshifted by the same amount so their colours will be very similar. Therefore, cluster members were chosen by being a similar colour to other close by galaxies. Proximity, cluster members will be close by to each other so their separation was taken into account. Size, given that the members are at the same distance they should have similar sizes in comparison to galaxies that are closer or further away. The colour magnitudes and position is shown in Table \ref{tab:2255manual}. During the recording of these measurements it was hard to tell what galaxies were members of A2255 even using the three metrics.
+
+\begin{table}[H]
 	\centering
 	\caption{Manual selection of A2255 members}
 	\begin{tabularx}{0.8\textwidth}{lYYYYY}
@@ -136,83 +164,171 @@ Investigating the properties of individual galaxies is not a usefull metric when
 		21     & 258.313 & 64.073 & 18.363 & 16.299 & 15.373 \\
 	\bottomrule
 	\end{tabularx}
-	\caption*{he}
+	\caption*{Colour magnitudes were taken using the SDSS.}
+	\label{tab:2255manual}
 \end{table}
+
+\textbf{Radial search of the area of the cluster:}
+
+The RA/Dec of Abell 2255 was entered into the SDSS Radial Search tool \citep{SDSS-RS}. A Radial search in 5 arcmins was then preformed. This gives the magnitude data for several sources in the defined area but only the data with type = 3 was useful as that is the identifier for galaxies in the radial search. In total there were 479 galaxies within the radial search area and the Ra/Dec, u, g and r were recored for all these galaxies.
+
+\subsection{Part C: Tracking galaxy colours as a function of redshift}
+
+Given that Abell 2255 is a nearby galaxy cluster (redshift = 0.081) it cannot be used to determine universal properties of all the galaxy clusters in the universe. To find if galaxy colours change with redshift, two more galaxy clusters Abell 0023 and 0267 with redshifts of 0.105 and 0.230 respectively were entered into radial searches within 5 arcmins \citep{SDSS-RS} and the data recorded. 
 
 \section{Results and discussion}
 
-\begin{figure}
+\subsection{Part A: Galaxy types and colours}
+
+To create a colour-colour magnitude diagram the g magnitude needs to be subtracted from u (u-g) and plotted against the g magnitude minus the r magnitude (g-r). Where (u-g) is on the x-axis and (g-r) is on the y axis. The data from Table \ref{tab:ccmanual} is shown in the colour-colour diagram in Figure \ref{fig:parta}.
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Figures/parta}
-	\caption{}
+	\includegraphics[width=0.5\textwidth]{Figure/parta}
+	\caption{A colour-colour diagram in (u-g) vs (g-r) from the data in Table \ref{tab:ccmanual}. The grey dashed line has the equation (g-r) = −(u-g) + 2.2. The blue points are spiral and red are elliptical galaxies.}
 	\label{fig:parta}
 \end{figure}
 
-\begin{figure}
+From Figure \ref{fig:parta} there is two groups of galaxies that can be separated by the dashed line (g-r) = −(u-g) + 2.2 \citep{Strateva_2001} which represents the division between early and late type galaxies. Given that more red galaxies and therefore cooler galaxies lie above the dashed line and bluer galaxies which are hotter lie beneath the line, then the points marked red on Figure \ref{fig:parta} are elliptical galaxies and the blue points are spiral galaxies \citep[Fig 1]{Strateva_2001}. A comparison of the manually determined type of galaxy with the calculated values from Figure \ref{fig:parta} is show in Table \ref{tab:comparison}.
+
+\begin{table}[H]
+	\caption{Comparison of Manual vs Calculated classification techniques}
+	\begin{tabularx}{\textwidth}{lYYYYYYYYYY}
+		\toprule
+		Galaxy & a & b & c & d & e & f & g & h & i & [E:S] \\
+		\cmidrule(lr){1-10}
+		\cmidrule(lr){11-11}
+		Manual & E0 & Sb & Sc & E5 & E3 & E0 & E7 & Sa & E0 & 6:3  \\
+		\addlinespace
+		Calculated & S & E & S & S & E & E & E & E & E & 6:3 \\
+		\cmidrule(lr){1-10}
+		Match? [Y/N] & N & N & Y & N & Y & Y & Y & N & Y & \\
+		\bottomrule
+	\end{tabularx}
+	\caption*{Manual vs calculated type of galaxy where E represents Elliptical galaxies (early type) and S represents Spiral Galaxies (late type). [E:S] is the ratio of Elliptical to Spiral galaxies.}
+	\label{tab:comparison}
+\end{table}
+
+Only five of the galaxies have the same type when comparing the manual values with the calculated values. This mismatch is most likely due to human error in identifying the galaxy by direct observation as factors like their angle to the observer and resolution can make it hard to differentiate between spiral and elliptical. This can also make it difficult to decide which type of spiral or elliptical it is as the eccentricity and shape of galactic arms can be hard to view. 
+
+\subsection{Part B: Clusters of galaxies}
+
+The colour-colour diagram of all the galaxies found by the manual selection and radial search of A2255 is shown in Figure \ref{fig:partb}.
+
+\begin{figure}[H]
 	\begin{subfigure}{0.5\textwidth}
-		\includegraphics[width=\textwidth]{Figures/partb1}
-		\caption{}
+		\includegraphics[width=\textwidth]{Figure/partb1}
+		\caption{Regular view}
 		\label{fig:partbout}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
-		\includegraphics[width=\textwidth]{Figures/partb1zoom}
-		\caption{}
+		\includegraphics[width=\textwidth]{Figure/partb1zoom}
+		\caption{Zoomed view}
 		\label{fig:partbin}
 	\end{subfigure}
-	\caption{}
+	\caption{Colour-Colour magnitude diagram in (u-g) vs (g-r) of Abell 2255. The purple dots are the galaxies recorded using the radial search and green are the manual selection of galaxies recorded in Table \ref{tab:2255manual}. Figure \ref{fig:partbin} is the zoomed area in Figure \ref{fig:partbout}. The dashed grey line has the equation (g-r) = −(u-g) + 2.2 and is the division between early and late type galaxies.}
 	\label{fig:partb}
 \end{figure}
 
-\begin{figure}
+There is a less obvious split between the types of galaxies when looking at the colour-colour diagram of the cluster compared to Figure \ref{fig:parta}. Most of the points found by the manual selection are also points found by the radial search except one at (u-g=2.15, g-r=1.0). The most likely reason for this mismatch is that during the manual selection a galaxy outside of 5 arcmins was recorded. To find the number of galaxies above and bellow the line Equation \ref{eq:cross} can be used.
+\begin{equation}
+	(\vec{p}-\vec{a}) \times (\vec{b}-\vec{a})= \begin{cases}
+	< 0\quad\text{:\quad Above Line} \\
+	\quad0\quad\text{:\quad On the Line} \\
+	> 0\quad\text{:\quad Bellow Line}
+	\end{cases}
+	\label{eq:cross}
+\end{equation}
+Equation \ref{eq:cross} is the cross product of position of the galaxy on the plot, $\vec{p}$, which is the vector [(u-g),(g-r)] minus a position of any point point on the dashed line, $\vec{a}$, with any other point on the dashed line, $\vec{b}$, minus $\vec{a}$. The two points on the line $\vec{a}$ and $\vec{b}$ cannot be equal. For Abell 2255 there are 264 galaxies above the line and 215 bellow. Therefore there are 264 early type galaxies and 215 late type galaxies.
+
+ \pagebreak
+ \textbf{The (u-r) properties of Abell 2255:} 
+ 
+ A plot of (u-r) vs g for the galaxies in Abell 2255 is shown in Figure \ref{fig:partburproperties} 
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Figures/urproperties}
-	\caption{}
+	\includegraphics[width=0.5\textwidth]{Figure/urproperties}
+	\caption{A plot of (u-r) vs g magnitudes for Abell 2255. The blue marks are galaxies with g magnitudes between 15 and 19. The pink marks are galaxies with g magnitudes between 19 and 23. The two dashed lines represent the mean (u-r) value for each group }
 	\label{fig:partburproperties}
 \end{figure}
 
-\begin{figure}
+The galaxies were split into two group based on their g magnitudes: those between $15<g<19$ and between $19<g<23$.The two vertical dashed lines represent the mean (u-r) value which is $15<g<19 = 2.887 \pm 0.23$ and $19<g<23=2.455 \pm 0.05$. Given that early type galaxies have (u-r) values higher than 2.2, and late type galaxies have (u-r) values lower than 2.2 then the galaxies in A2255 are mainly early type. From Figure \ref{fig:partburproperties} it can also be seen that more luminous galaxies have higher (u-r) in A2255. 
+\pagebreak
+\subsection{Part C: Tracking galaxy colours as a function of redshift}
+A colour colour diagram of all three clusters A2255, A0023 and A0267 is shown in Figure \ref{fig:partccolourcolour}.
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Figures/partcallgalaxy}
-	\caption{}
+	\includegraphics[width=0.5\textwidth]{Figure/partcallgalaxy}
+	\caption{A colour-colour magnitude diagram of the three galactic clusters Abell 2255, Abell 0023 and Abell 0267. The dashed grey line is the split between early and late galaxy types and has equation (g-r) = −(u-g) + 2.2.}
 	\label{fig:partccolourcolour}
 \end{figure}
 
-\begin{figure}
+All three clusters have similar colour distributions of galaxies. The number of galaxies that lie above and bellow for the two new clusters are: Abell 0023 = 173 above, 271 bellow and Abell 0267 = 114 above, 263 bellow. A histogram of (u-r) for each cluster is shown in Figure \ref{fig:hist}.
+
+\begin{figure}[H]
 	\begin{subfigure}{0.33\textwidth}
-		\includegraphics[width=\textwidth]{Figures/A2255hist}
+		\includegraphics[width=\textwidth]{Figure/A2255hist}
 		\caption{Abell 2255}
 		\label{fig:a2255hist}
 	\end{subfigure}
 	\begin{subfigure}{0.33\textwidth}
-		\includegraphics[width=\textwidth]{Figures/A0023hist}
+		\includegraphics[width=\textwidth]{Figure/A0023hist}
 		\caption{Abell 0023}
 		\label{fig:a0023hist}
 	\end{subfigure}
 	\begin{subfigure}{0.33\textwidth}
-		\includegraphics[width=\textwidth]{Figures/A0267hist}
+		\includegraphics[width=\textwidth]{Figure/A0267hist}
 		\caption{Abell 0267}
 		\label{fig:a0267hist}
 	\end{subfigure}
-	\caption{}
+	\caption{Three histograms of (u-r) of the three clusters. The coloured dashed lines represent the mean (u-r) value for each cluster. The dotted black lines are the fitted normal distributions.}
 	\label{fig:hist}
 \end{figure}
 
-\begin{figure}
+The coloured dashed line on each plot is the mean value of (u-r) for each galaxy. The mean (u-r) for A2255, A0023 and A0267 is ($2.287 \pm 0.05$), ($1.863 \pm 0.04$) and ($1.599 \pm 0.05$) respectively. The dotted black line on each plot is the fitted normal distribution with standard deviation 1.441, 1.311 and 1.548. The fitted normal distribution more closely matches A0023 than A2255 and A0267 which is likely due to the large peaks that occur in the latter two. All the values found in Part C for the three galaxy clusters are shown in Table \ref{tab:values}. The (u-r) values also match the split between early and late types proposed by \citet{Strateva_2001} at (u-r) = 2.22 where above 2.22 galaxies are more likely to be Elliptical and bellow 2.22 they are more likely to be Spiral which matches the data in this report.
+
+\begin{table}[H]
+	\caption{Values found for the three clusters in Part C}
+	\begin{tabularx}{\textwidth}{YYYYYYY}
+		\toprule
+		\multirow{2}[3]{*}{Cluster} & \multicolumn{3}{c}{Number of Galaxies} & \multicolumn{2}{c}{(u-r)} \\
+		\cmidrule(lr){2-4} \cmidrule(lr){5-6}
+		 & Total & Spiral & Elliptical & mean & $\sigma$ \\
+		 \midrule
+		 Abell 2255 & 479 & 215 (45\%) & 264 (55\%) & $2.287 \pm 0.05$ & 1.441 \\
+		 \addlinespace
+		 Abell 0023 & 444 & 271 (61\%) & 173 (39\%) & $1.863 \pm 0.04$ & 1.311 \\
+		 \addlinespace
+		 Abell 0267 & 377 & 263 (70\%) & 114 (30\%) & $1.599 \pm 0.05$ & 1.548 \\
+		 \bottomrule
+	\end{tabularx}
+	\caption*{The percentage values attached to the Number of spiral and elliptical are the fraction that each type makes up of that cluster. }
+	\label{tab:values}
+\end{table}
+
+A plot the number and type of galaxies with redshift is shown in Figure \ref{fig:red}, dashed grey lines are fitted lines to the data. There is no evidence of the number of galaxies in a cluster being correlated with redshift so the fit in Figure \ref{fig:numvsred} cannot be extrapolated to find the number of galaxies in a cluster with known redshift. The dashed line in Figure \ref{fig:fracvsred} has the equation: $\text{Redshift} = |-1.17(\text{Fraction of galaxies})+0.585|$. This equation is also not a strong fit to the data in Figure \ref{fig:fracvsred} as at some redshift the fraction of elliptical and spiral galaxies flip. This fit does however suggest that at lower redshifts the fraction of spiral to elliptical is roughly 50:50 and at higher redshifts there are more spirals than ellipticals which agrees with agrees with \citet{butcher}. This could mean that over time spiral galaxies turn into elliptical or lenticular galaxies by colliding with other spiral galaxies \citep{spiralmerge}.
+
+\begin{figure}[H]
 	\begin{subfigure}{0.5\textwidth}
-		\includegraphics[width=\textwidth]{Figures/numbervsredshift}
-		\caption{}
+		\includegraphics[width=\textwidth]{Figure/numbervsredshift}
+		\caption{No. of galxies vs Redshift}
 		\label{fig:numvsred}
 	\end{subfigure}
 	\begin{subfigure}{0.5\textwidth}
-		\includegraphics[width=\textwidth]{Figures/fracvsredshift}
-		\caption{}
+		\includegraphics[width=\textwidth]{Figure/fracvsredshift}
+		\caption{Type of galaxy vs redshift}
 		\label{fig:fracvsred}
 	\end{subfigure}
-	\caption{}
+	\caption{Two plots of now the number of galaxies and types change with redshift. The dashed grey line in Figure \ref{fig:numvsred} has equation $y=1.16\times 10^{-5}x^2 - 0.011x + 2.87$. The dashed grey line in Figure \ref{fig:fracvsred} has equation $y = |-1.17x+0.585|$.}
 	\label{fig:red}
 \end{figure}
 
+It is hard to discuss error in this report as only the radial search tool records error in its values. Incorporating the error into Equation \ref{eq:cross} was too difficult in this report so any uncertainty in the type of galaxy cannot be commented on.
+
 \section{Conclusion}
+
+In this report colour magnitude data of several galaxy clusters, Abell 2255, Abell 0023 and Abell 0267, were recorded using the Sloan Digital Sky Survey. Techniques to decide if a galaxy is an early (Elliptical) or late (Spiral) type were compared and their accuracy analysed to determine the best method to find the cluster population demographics. From this comparison the best technique found was a radial search of the area around the cluster, it was able to pick up more galaxies than other methods but it may have some inaccuracy as it can record more galaxies than are in the cluster. This is because it can also detect galaxies that are in the area of the radial search but not necessarily in the cluster. The mean (u-r) values were recored as $2.287 \pm 0.05$, $1.863 \pm 0.04$ and $1.599 \pm 0.05$ for Abell 2255, Abell 0023 and Abell 0267 respectively. The ratio of late to early type (late:early) were 0.45:0.55, 0.61:0.39 and 0.7:0.3 for Abell 2255, Abell 0023 and Abell 0267 which matches the split between galaxy types proposed by \citep{Strateva_2001} at (u-r) = 2.22. An analysis of the ratio of late to early types with redshift found that as redshift increases late type galaxies make up a larger fraction of galactic demographics. This could suggest that over time spiral galaxies turn into elliptical by colliding with other galaxies as proposed by \citep{spiralmerge}.
 
 \bibliographystyle{agsm}
 \bibliography{colourref.bib}

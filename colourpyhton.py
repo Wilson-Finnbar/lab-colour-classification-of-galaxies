@@ -2,7 +2,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import uncertainties as uc
+from uncertainties import unumpy
 from matplotlib.patches import Rectangle
+from scipy.stats import norm
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
 plt.rcParams.update({'font.size': 10})
@@ -71,8 +74,8 @@ y = 2.2-x
 fig2 = plt.figure(figsize=(5,3.3))
 ax2 = fig2.add_subplot(111)
 
-ax2.plot(b['u']-b['g'],b['g']-b['r'],'go',alpha=0.3, label='self select')
-ax2.plot(b2['u']-b2['g'],b2['g']-b2['r'],'bo',alpha=0.1,label='radial search')
+ax2.plot(b['u']-b['g'],b['g']-b['r'],'g.',alpha=0.3, label='self select')
+ax2.plot(b2['u']-b2['g'],b2['g']-b2['r'],c='mediumpurple',marker='.',lw=0,alpha=0.3,label='radial search')
 ax2.plot(x,y,'k--',alpha=0.3)
 ax2.add_patch(Rectangle((1,0.6),1.6,0.6, fc='none',ec='r',lw=1,label='zoomed plot',zorder=3))
 ax2.set_xlim(-6,8)
@@ -87,7 +90,7 @@ fig3 = plt.figure(figsize=(5,3.3))
 ax3 = fig3.add_subplot(111)
 
 ax3.plot(b['u']-b['g'],b['g']-b['r'],'go',alpha=0.3, label='self select')
-ax3.plot(b2['u']-b2['g'],b2['g']-b2['r'],'bo',alpha=0.1,label='radial search')
+ax3.plot(b2['u']-b2['g'],b2['g']-b2['r'],c='mediumpurple',marker='o',lw=0,alpha=0.3,label='radial search')
 ax3.plot(x,y,'k--',alpha=0.3)
 ax3.set_xlim(1,2.6)
 ax3.set_ylim(0.6,1.2)
@@ -175,35 +178,52 @@ A2255['u-r'] = (A2255['u']-A2255['r'])
 A0023['u-r'] = (A0023['u']-A0023['r'])
 A0267['u-r'] = (A0267['u']-A0267['r'])
 
+print(A2255['u-r'].mean(),A0023['u-r'].mean(),A0267['u-r'].mean())
+
+x = np.linspace(-5, 15, 100)
+
+mu1, std1 = norm.fit(A2255['u-r'])
+mu2, std2 = norm.fit(A0023['u-r'])
+mu3, std3 = norm.fit(A0267['u-r'])
+
+p1 = norm.pdf(x, mu1, std1)
+p2 = norm.pdf(x, mu2, std2)
+p3 = norm.pdf(x, mu3, std3)
+
+print(std1,std2,std3)
+
 hisbins = np.linspace(-5,15,num=50)
 
 plt.figure(figsize=(3.5,2.5))
-plt.hist(A2255['u-r'],bins=hisbins,color='mediumpurple',alpha=0.5)
+plt.hist(A2255['u-r'],bins=hisbins,density=True,color='mediumpurple',alpha=0.5)
 plt.axvline(x=A2255['u-r'].mean(),c='mediumpurple',ls='--')
+plt.plot(x, p1, 'k:', linewidth=1.5)
 plt.xlabel('u-r')
-plt.ylabel('Frequency')
+plt.ylabel('Frequency density')
 plt.xlim(-5,15)
-plt.ylim(0,100)
+plt.ylim(0,0.5)
 plt.tight_layout()
 plt.savefig("Figure/A2255hist.pdf")
 
 plt.figure(figsize=(3.5,2.5))
-plt.hist(A0023['u-r'],bins=hisbins,color='palegreen',alpha=0.5)
+plt.hist(A0023['u-r'],bins=hisbins,density=True,color='palegreen',alpha=0.5)
 plt.axvline(x=A0023['u-r'].mean(),c='palegreen',ls='--')
+plt.plot(x, p2, 'k:', linewidth=1.5)
 plt.xlabel('u-r')
 #plt.ylabel('Frequency')
 plt.xlim(-5,15)
-plt.ylim(0,100)
+plt.ylim(0,0.5)
 plt.tight_layout()
 plt.savefig("Figure/A0023hist.pdf")
 
 plt.figure(figsize=(3.5,2.5))
-plt.hist(A0267['u-r'],bins=hisbins,color='crimson',alpha=0.5)
+plt.hist(A0267['u-r'],bins=hisbins,density=True,color='crimson',alpha=0.5)
 plt.axvline(x=A0267['u-r'].mean(),c='crimson',ls='--')
+plt.plot(x, p2, 'k:', linewidth=1.5)
 plt.xlabel('u-r')
 #plt.ylabel('Frequency')
 plt.xlim(-5,15)
-plt.ylim(0,100)
+plt.ylim(0,0.5)
 plt.tight_layout()
 plt.savefig("Figure/A0267hist.pdf")
 
@@ -234,17 +254,27 @@ for i in range(len(A0267.axes[0])):
         a0267 += 1
 
 print(a2255,a0023,a0267)
+print((a2255)/len(A2255.axes[0]),a0023/len(A0023.axes[0]),a0267/len(A0267.axes[0]))
+print(len(A2255.axes[0])-a2255,len(A0023.axes[0])-a0023,len(A0267.axes[0])-a0267)
 
 fig6 = plt.figure(figsize=(5,3.3))
 ax6 = fig6.add_subplot(111)
 
+numberc = np.array([len(A2255.axes[0]),len(A0023.axes[0]),len(A0267.axes[0])])
+redshift = [0.081,0.105,0.230]
+
+x =  np.arange(350,530,1)
+poly = np.polyfit(numberc,redshift, deg=2)
+p = np.poly1d(poly)
+ax6.plot(x,p(x),'k--',alpha=0.3)
+
 ax6.plot(len(A2255.axes[0]),0.081,c='mediumpurple',marker='o',lw=0,alpha=0.9)
-ax6.annotate(f"Abell 2255",(len(A2255.axes[0])+5,0.081-0.004))
+ax6.annotate(f"Abell 2255",(len(A2255.axes[0])-30,0.081-0.008))
 ax6.plot(len(A0023.axes[0]),0.105,c='palegreen',marker='o',lw=0,alpha=0.9)
-ax6.annotate(f"Abell 0023",(len(A0023.axes[0])+5,0.105-0.004))
+ax6.annotate(f"Abell 0023",(len(A0023.axes[0])-30,0.105-0.008))
 ax6.plot(len(A0267.axes[0]),0.230,c='crimson',marker='o',lw=0,alpha=0.9)
 ax6.annotate("Abell 0267",(len(A0267.axes[0])+5,0.230-0.004))
-ax6.set_xlim(360,520)
+ax6.set_xlim(360,500)
 ax6.set_ylim(0.0,0.25)
 ax6.set_xlabel('Number of galaxies')
 ax6.set_ylabel('Redshift')
@@ -279,4 +309,18 @@ ax7.set_xlabel('Fraction of galaxies in the cluster')
 ax7.set_ylabel('Redshift')
 plt.tight_layout()
 plt.savefig("Figure/fracvsredshift.pdf")
+
+# %%
+u = unumpy.uarray([A0267['u']],[A0267['Err_u']])
+r = unumpy.uarray([A0267['r']],[A0267['Err_r']])
+mur = u - r
+print(mur.mean())
+print(p)
+
+'''
+g1519['u-r'] = (g1519['u']-g1519['r'])
+g1923['u-r'] = (g1923['u']-g1923['r'])
+
+mg1519 = uc.uarray([g1519['u-r']],[])
+'''
 # %%
